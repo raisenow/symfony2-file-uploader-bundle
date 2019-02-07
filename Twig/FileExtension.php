@@ -2,9 +2,9 @@
 
 namespace PunkAve\FileUploaderBundle\Twig;
 
-use Twig_Extension;
-use Twig_Function_Method;
 use Symfony\Component\DependencyInjection\Container;
+use Twig_Extension;
+use Twig_SimpleFunction;
 
 class FileExtension extends Twig_Extension
 {
@@ -17,9 +17,9 @@ class FileExtension extends Twig_Extension
 
     public function getFunctions()
     {
-        return array(
-            'punkave_get_files' => new Twig_Function_Method($this, 'getFiles'),
-        );
+        return [
+            new Twig_SimpleFunction('punkave_get_files', [$this, 'getFiles']),
+        ];
     }
 
     public function getFiles($folder)
